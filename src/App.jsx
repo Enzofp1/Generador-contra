@@ -94,7 +94,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>Generador de Contraseñas</h1>
+      <h1 className='aa'>Generador de Contraseñas</h1>
 
       <div>
         <label>Longitud de la Contraseña:</label>
