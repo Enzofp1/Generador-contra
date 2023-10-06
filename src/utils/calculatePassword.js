@@ -1,7 +1,7 @@
 const calculatePasswordStrength = (passwordLength) => {
-    if (passwordLength <= 10) {
+    if (passwordLength <= 5) {
       return 'Débil';
-    } else if (passwordLength <= 30) {
+    } else if (passwordLength <= 8) {
       return 'Media';
     } else {
       return 'Fuerte';

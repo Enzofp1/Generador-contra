@@ -103,8 +103,10 @@ const App = () => {
       <h1 className='aa'>Generador de Contraseñas</h1>
 
       <div>
-        <label>Longitud de la Contraseña:</label>
+        <label>Longitud de la Contraseña:
         <input type="number" value={length} onChange={handleLengthChange} />
+        </label>
+        
       </div>
      {
         INPUTS.map((check,i) => (
@@ -129,6 +131,9 @@ const App = () => {
                 display: 'flex',
                 textOverflow: 'ellipsis',
                 textAlign: 'center',
+                backgroundColor: 'rgb(255 255 255 / 36%)',
+                borderRadius: '5px',
+                padding: '5px',
           }}>{password}</p>
           <Button onClick={handleCopyToClipboard}>Copiar al Portapapeles</Button>
         </div>

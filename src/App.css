@@ -17,7 +17,7 @@ body {
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #856868;
+  background-color: #c19999;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -71,7 +71,11 @@ button:disabled {
   background-color: #ccc;
   border-radius: 3px;
 }
-
+.aa{
+  font-size: 2em;
+  line-height: 1.1;
+  color: #19232f;
+}
 
 
 
