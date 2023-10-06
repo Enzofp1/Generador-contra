@@ -1,37 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import Button from './components/Button';
+import Check from './components/Check';
+import generatePassword from './utils/generatePassword';
+import calculatePasswordStrength from './utils/calculatePassword';
 
-const calculatePasswordStrength = (passwordLength) => {
-  if (passwordLength <= 5) {
-    return 'Débil';
-  } else if (passwordLength <= 10) {
-    return 'Media';
-  } else {
-    return 'Fuerte';
-  }
-};
 
-const generatePassword = (length, includeUppercase, includeLowercase, includeNumbers, includeSpecialChars) => {
-  const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  const lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
-  const numberChars = '0123456789';
-  const specialChars = '!@#$%^&*()_+{}[]|;:,.<>?';
 
-  let chars = '';
-
-  if (includeUppercase) chars += uppercaseChars;
-  if (includeLowercase) chars += lowercaseChars;
-  if (includeNumbers) chars += numberChars;
-  if (includeSpecialChars) chars += specialChars;
-
-  let password = '';
-  for (let i = 0; i < length; i++) {
-    const randomIndex = Math.floor(Math.random() * chars.length);
-    password += chars[randomIndex];
-  }
-
-  return password;
-};
 
 const App = () => {
   const [password, setPassword] = useState('');
@@ -43,7 +18,38 @@ const App = () => {
   const [passwordStrength, setPasswordStrength] = useState('Débil');
   const [filledPercentage, setFilledPercentage] = useState(0);
   const [showSelectMessage, setShowSelectMessage] = useState(false);
-
+  const INPUTS= [{
+    onChange: () => {
+             setIncludeUppercase(!includeUppercase);
+             handleCheckboxChange();
+           },
+     label: 'Incluir Mayúsculas',
+     checked: includeUppercase,
+   },
+   {
+     onChange: () => {
+             setIncludeLowercase(!includeLowercase);
+             handleCheckboxChange();
+           },
+     label: 'Incluir Minúsculas',
+     checked: includeLowercase,
+   },
+   {
+     onChange: () => {
+             setIncludeNumbers(!includeNumbers);
+             handleCheckboxChange();
+           },
+     label: 'Incluir Números',
+     checked: includeNumbers,
+   },
+   {
+     onChange: () => {
+             setIncludeSpecialChars(!includeSpecialChars);
+             handleCheckboxChange();
+           },
+     label: 'Incluir Caracteres Especiales',
+     checked: includeSpecialChars,
+   },];
   useEffect(() => {
     const strength = calculatePasswordStrength(password.length);
     setPasswordStrength(strength);
@@ -89,7 +95,7 @@ const App = () => {
    
     if (!(includeUppercase || includeLowercase || includeNumbers || includeSpecialChars)) {
       setPassword('');
-    }
+    }generar
   };
 
   return (
@@ -100,58 +106,15 @@ const App = () => {
         <label>Longitud de la Contraseña:</label>
         <input type="number" value={length} onChange={handleLengthChange} />
       </div>
-
-      <div>
-        <label>Incluir Mayúsculas:</label>
-        <input
-          type="checkbox"
-          checked={includeUppercase}
-          onChange={() => {
-            setIncludeUppercase(!includeUppercase);
-            handleCheckboxChange();
-          }}
-        />
-      </div>
-
-      <div>
-        <label>Incluir Minúsculas:</label>
-        <input
-          type="checkbox"
-          checked={includeLowercase}
-          onChange={() => {
-            setIncludeLowercase(!includeLowercase);
-            handleCheckboxChange();
-          }}
-        />
-      </div>
-
-      <div>
-        <label>Incluir Números:</label>
-        <input
-          type="checkbox"
-          checked={includeNumbers}
-          onChange={() => {
-            setIncludeNumbers(!includeNumbers);
-            handleCheckboxChange();
-          }}
-        />
-      </div>
-
-      <div>
-        <label>Incluir Caracteres Especiales:</label>
-        <input
-          type="checkbox"
-          checked={includeSpecialChars}
-          onChange={() => {
-            setIncludeSpecialChars(!includeSpecialChars);
-            handleCheckboxChange();
-          }}
-        />
-      </div>
+     {
+        INPUTS.map((check,i) => (
+          <Check {...check}key={i}/>
+        ))
+     }
 
       {showSelectMessage && <p>Debes seleccionar al menos una casilla.</p>}
 
-      <button onClick={handleGeneratePassword}>Generar Contraseña</button>
+      <Button onClick={handleGeneratePassword}>Generar Contraseña</Button>
 
       {password && (
         <div style={{
@@ -167,7 +130,7 @@ const App = () => {
                 textOverflow: 'ellipsis',
                 textAlign: 'center',
           }}>{password}</p>
-          <button onClick={handleCopyToClipboard}>Copiar al Portapapeles</button>
+          <Button onClick={handleCopyToClipboard}>Copiar al Portapapeles</Button>
         </div>
       )}
 
