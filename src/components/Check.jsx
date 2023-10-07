@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 
-const Check = ({label,checked,onChange}) => {
+const Check = ({label,checked,onChange,className}) => {
   const [isChecked, setIsChecked] = useState(checked);
   return (
-   <section style={{display:'flex',gap:'10px',}}>
+   <section className={className} style={{display:'flex',gap:'10px',}}>
     <span onClick={() => {
           setIsChecked(!isChecked);
           onChange();

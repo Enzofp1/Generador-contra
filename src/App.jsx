@@ -25,6 +25,7 @@ const App = () => {
            },
      label: 'Incluir Mayúsculas',
      checked: includeUppercase,
+     className:'ac'
    },
    {
      onChange: () => {
@@ -33,6 +34,7 @@ const App = () => {
            },
      label: 'Incluir Minúsculas',
      checked: includeLowercase,
+     className:'ac'
    },
    {
      onChange: () => {
@@ -41,6 +43,7 @@ const App = () => {
            },
      label: 'Incluir Números',
      checked: includeNumbers,
+     className:'ac'
    },
    {
      onChange: () => {
@@ -49,6 +52,7 @@ const App = () => {
            },
      label: 'Incluir Caracteres Especiales',
      checked: includeSpecialChars,
+    className:'ac'
    },];
   useEffect(() => {
     const strength = calculatePasswordStrength(password.length);

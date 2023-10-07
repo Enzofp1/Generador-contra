@@ -41,9 +41,11 @@ label {
 input,
 button {
   padding: 8px;
-  margin: 5px 0;
+   margin: 1px;
 }
-
+.ac{
+  margin: 10px;
+}
 button {
   background-color: #007bff;
   color: #fff;
