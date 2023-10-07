@@ -1,15 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Check = ({label,checked,onChange}) => {
+  const [isChecked, setIsChecked] = useState(checked);
   return (
    <section style={{display:'flex',gap:'10px',}}>
-    <span>
+    <span onClick={() => {
+          setIsChecked(!isChecked);
+          onChange();
+        }}>
+
         {label}
     </span>
     <input
         type="checkbox"      
-        checked={checked}
-        onChange={onChange}
+        checked={isChecked}
+        onChange={() => {
+          setIsChecked(!isChecked);
+          onChange();
+        }}
         />
    </section>
   )

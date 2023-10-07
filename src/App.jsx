@@ -81,7 +81,7 @@ const App = () => {
   };
 
   const handleLengthChange = (e) => {
-    const newLength = parseInt(e.target.value, 10);
+    const newLength = parseInt(e.target.value,10);
     setLength(newLength);
     if (isNaN(newLength)) {
       return;
@@ -95,7 +95,7 @@ const App = () => {
    
     if (!(includeUppercase || includeLowercase || includeNumbers || includeSpecialChars)) {
       setPassword('');
-    }generar
+    }
   };
 
   return (
