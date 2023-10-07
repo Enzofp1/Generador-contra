@@ -1,5 +1,4 @@
 
-
 a {
   font-weight: 500;
   color: #646cff;
@@ -17,7 +16,11 @@ body {
   min-height: 100vh;
 }
 
-
+.ab{
+  border-radius: 10px;
+  border: 1px solid transparent;
+  font-size: 1rem;
+}
 
 button {
   border-radius: 8px;
@@ -26,7 +29,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #1a1a19b0;
   cursor: pointer;
   transition: border-color 0.25s;
 }

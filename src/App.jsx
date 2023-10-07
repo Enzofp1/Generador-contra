@@ -104,7 +104,7 @@ const App = () => {
 
       <div>
         <label>Longitud de la Contraseña:
-        <input type="number" value={length} onChange={handleLengthChange} />
+        <input className='ab' type="number" value={length} onChange={handleLengthChange} />
         </label>
         
       </div>
